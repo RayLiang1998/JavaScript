@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>04Object.html</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <script>
+    
+        let cars = {
+            brand: "tesla",
+            "max speed": 250,
+            color: "white",
+            printf: function () {
+                return `${this.brand}, ${this["max speed"]}`
+            }
+        }
+
+        //console.log(cars);
+        //console.log(cars.color);
+        //console.log(cars.printf());
+
+    //for..in
+
+        let div1 = document.getElementById("myDiv");
+
+        for (let prop in cars) {
+            console.log(prop); //name
+            console.log(cars[prop]); //value
+            console.log(`<li>cars["${prop}"]=${cars[prop]}</li>`);
+            div1.innerHTML += `<li>cars["${prop}"]=${cars[prop]}</li>`;
+        }
+    
+    </script>        
+</body>
+</html>

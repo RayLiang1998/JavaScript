@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02varScope.html</title>
+</head>
+<body>
+    <script>
+            //廣域(全域)變數
+        var a = 100;
+    
+        //    //函數宣告定義
+        //function f()  {
+        //    var a = 10;
+        //    console.log(`function.a = ${a}`);
+        //    console.log(`window.a = ${window.a}`);
+        //    console.log(`this.a = ${this.a}`);
+        //}
+    
+        //    //呼叫函數
+        //console.log(`function out a call function before a = ${a}`);
+        //f();
+        //console.log(`function out a call function after a = ${a}`);
+
+        //====================================================================
+        //function f() {
+        //    a = 10;
+        //    console.log(`function.a = ${a}`);
+        //    console.log(`window.a = ${window.a}`);
+        //    console.log(`this.a = ${this.a}`);
+        //}
+
+        ////呼叫函數
+        //console.log(`function out a call function before a = ${a}`);
+        //f();
+        //console.log(`function out a call function after a = ${a}`);
+        //=====================================================================
+        let b = 1000;
+
+        function f() {
+            var a = 10;
+            for (let a = 1; a <= 3; a++) {
+                console.log(`block a = ${a}`)
+            }
+            console.log(`function a = ${a}`)
+        }
+
+                //呼叫函數
+        console.log(`function out a call function before a = ${a}`);
+        f();
+        console.log(`function out a call function after a = ${a}`);
+    </script>
+</body>
+</html>

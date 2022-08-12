@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01setTimeout.html</title>
+
+</head>
+<body>    
+	<input type="button" id="idbutstop" value="停止轉向連結" />
+    <a href="https://www.ispan.com.tw" target="_blank">iSpan</a>
+    <script>
+        function stopf() {
+            //window.clearTimeout-停止計時器            
+            window.clearTimeout(t);
+        }
+        //location.href = "https://www.ispan.com.tw";
+        //轉向連結到 https://www.ispan.com.tw
+        //slide105,location.href-轉向連結到其它網址
+        let t = window.setTimeout(function () {
+            location.href = "https://www.ispan.com.tw";
+        }, 3000)
+
+
+        document.getElementById("idbutstop").addEventListener("click", stopf);  //事件繫結      
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01functionMethod.html</title>
+</head>
+<body>
+    <script>
+        //==========定義函數==================
+        //方法一函數宣告，定義帶參數的函數
+        function fadd(i, j) {
+            return (i + j)
+        }
+
+
+
+        //==========函數呼叫==================
+        //呼叫帶參數的函數
+        console.log(`fadd(10,20) = ${fadd(10, 20)}`);
+
+
+        //JavaScript沒有規定function的參數及呼叫function時給予的參數數量必須要一致
+        //少掉的參數為undefined，而多的參數會被忽略
+        function fadd2(a, b = 100) {
+            console.log(`b=${b}`);
+            return (a + b);
+        }
+        console.log(`fadd2(10)= ${fadd2(10)}`);
+        console.log(`fadd2(10, 20, 30)= ${fadd2(10, 20, 30)}`);
+        //預設參數值(ES6)
+        function fadd3(a, b = 100) {
+            console.log(`b=${b}`);
+            return(a+b)
+        }
+        console.log(`fadd3(10) = ${fadd3(10)}`);
+
+        //==========定義函數==================
+        //方法二暱名函數
+
+        let fadd4 = function (a, b) {
+            return (a+b)
+        }
+        console.log(`fadd4 = ${fadd4(100, 200)}`);
+
+        //==========定義函數==================
+        //方法三箭頭函數(arrow function)
+        let f5 = (a, b) => {return (a + b);}
+        console.log(`f5(150,350) = ${f5(150, 350)}`);
+
+        //函數沒有參數
+        let f6 = () => {
+            return (3000);
+        }
+        console.log(`f6()= ${f6()}`)
+        //如果statement 只有一行，return 和 {} 可省略
+        let f7 = (a, b) => a + b;
+        console.log(`f7(150,650) = ${f7(150, 650)}`);
+
+        //只有一個參數，()可省略
+        let f8 = a => a + 5000;
+        console.log(`f8(150)= ${f8(150)}`);
+
+        console.log(`f8= ${f8}`);
+        f7 = f8;
+        console.log(`f7= ${f7}`);
+        fadd = f7;
+        console.log(`fadd= ${fadd}`);
+
+
+    </script>
+</body>
+</html>
