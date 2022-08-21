@@ -1,11 +1,118 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+﻿﻿
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Star</title>
+    <style>
+        .isClick {
+            background-image: url("hwimage/star.jpg");
+            filter: grayscale(0);
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-size: 100%;
+        }
+
+        .star {
+            background-image: url("hwimage/star.jpg");
+            filter: grayscale(1);
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-size: 100%;
+        }
+
+            
+    </style>
 </head>
 <body>
+    <div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="info"></div>
+    </div>
+    <script>
+        let stars = document.querySelectorAll(".star");
+        let infoEle = document.querySelector(".info");
+        let currentClickIndex = 5;
+        let currentMouseOverIndex = 5;
+        addEvent();
 
+        function addEvent() {
+            console.log("stars", stars)
+            stars.forEach((item) => {
+                item.addEventListener("click", clickEvent);
+                item.addEventListener("dblclick", dblclickEvent);
+                item.addEventListener("mouseover", mouseOver);
+                item.addEventListener("mouseout", mouseOut);
+            })
+        }
+
+        function clickEvent(e) {
+            let ele = e.target;
+            stars.forEach((item,index) => {
+                if (item == ele) {
+                    if (index == 0) {
+                        currentClickIndex = index
+                        infoEle.innerHTML = `${currentClickIndex + 1} star received.`
+                    }
+                    else {
+                        currentClickIndex = index
+                        infoEle.innerHTML = `Congratulations! ${currentClickIndex + 1} stars received.`
+                    }                    
+                }
+                if (currentClickIndex >= index) {
+                    item.setAttribute("class", "isClick");
+
+                }
+                else {
+                    item.setAttribute("class", "star");
+                }
+            })
+        }
+        function dblclickEvent() {
+            stars.forEach((item) => {
+                item.setAttribute("class", "star");
+            })
+            currentClickIndex = 5;
+        }
+
+        function mouseOver(e) {
+            let currentEle = e.target;
+            stars.forEach((item, index) => {
+                if (currentEle === item) {
+                    if (index == 0) {
+                        currentMouseOverIndex = index;
+                        infoEle.innerHTML = `You have given ${index + 1} star.`
+                    }
+                    else {
+                        currentMouseOverIndex = index;
+                        infoEle.innerHTML = `You have given ${index + 1} stars.`
+                    }                    
+                }
+                if (currentClickIndex === 5) {
+                    if (currentMouseOverIndex >= index) {
+                        item.setAttribute("class", "isClick");
+                    } else {
+                        item.setAttribute("class", "star");
+                    }
+                }
+
+            })
+        }
+        function mouseOut() {
+            if (currentClickIndex === 5) {
+                infoEle.innerHTML = ""
+                currentMouseOverIndex = 5
+                stars.forEach((item) => {
+                    item.setAttribute("class", "star");
+                })
+            }
+        }
+    </script>
 </body>
 </html>
